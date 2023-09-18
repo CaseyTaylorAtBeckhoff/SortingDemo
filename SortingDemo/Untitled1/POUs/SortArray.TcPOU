@@ -10,16 +10,18 @@ VAR
     i : DINT; 
     j : DINT; 
     temp : LREAL;
-    arraySize : DINT;
+    upperbound : DINT;
+	lowerbound : DINT;
 END_VAR  
 VAR_IN_OUT
-	target: array[1..100] of LREAL;
+	target: ARRAY[*] OF LREAL;
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[arraySize := UPPER_BOUND(target, 1); // get array size
+      <ST><![CDATA[lowerbound := LOWER_BOUND(target, 1); 
+upperbound := UPPER_BOUND(target, 1); // get array size
 
-FOR i := 1 TO arraySize DO
-    FOR j := 1 TO arraySize - i DO
+FOR i := lowerbound TO upperbound DO
+    FOR j := lowerbound TO upperbound - i DO
         IF target[j] > target[j + 1] THEN
     // Swap the elements
             temp := target[j];

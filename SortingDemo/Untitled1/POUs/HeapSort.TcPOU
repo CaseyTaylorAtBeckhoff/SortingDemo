@@ -9,27 +9,29 @@ FUNCTION HeapSort
 VAR
 	i : DINT;
 	temp : LREAL;
-	arraySize : DINT;
+	upperbound : DINT;
+	lowerbound: DINT;
 END_VAR
 VAR_IN_OUT
-	target: array[1..100] of LREAL;
+	target: ARRAY[*] OF LREAL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Build heap
-arraySize := UPPER_BOUND(target, 1);
-FOR i := arraySize / 2 TO 1 BY -1 DO
-  Heapify(arraySize, i, target);
+upperbound := UPPER_BOUND(target, 1);
+lowerbound := LOWER_BOUND(target, 1);
+FOR i := (upperbound + lowerbound) / 2 TO lowerbound BY -1 DO
+  Heapify(upperbound, i, target);
 END_FOR;
 
 // One by one extract an element from heap
-FOR i := arraySize TO 2 BY -1 DO
+FOR i := upperbound TO (lowerbound + 1) BY -1 DO
   // Move current root to end
-  temp := target[1];
-  target[1] := target[i];
+  temp := target[lowerbound];
+  target[lowerbound] := target[i];
   target[i] := temp;
 
   // Call max heapify on the reduced heap
-  Heapify(i, 1, target);
+  Heapify(i, lowerbound, target);
 END_FOR;
 ]]></ST>
     </Implementation>

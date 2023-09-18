@@ -7,7 +7,7 @@
 // Time:	Monday, September 18, 2023 4:17 PM
 FUNCTION Heapify
 VAR_INPUT
-	size : DINT;
+	upper : DINT;
 	i : DINT;
 END_VAR
 VAR
@@ -17,7 +17,7 @@ VAR
 	temp : LREAL;
 END_VAR
 VAR_IN_OUT
-	target: array[1..100] of LREAL;
+	target: ARRAY[*] OF LREAL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Initialize largest as root
@@ -26,14 +26,14 @@ left := 2 * i;
 right := 2 * i + 1;
 
 // If left child is larger than root
-IF left < size THEN 
+IF left < upper THEN 
 	IF target[left] > target[largest] THEN
 		largest := left;
 	END_IF;
 END_IF;
 
 // If right child is larger than largest so far
-IF right < size THEN
+IF right < upper THEN
 	IF target[right] > target[largest] THEN
 		largest := right;
 	END_IF;
@@ -46,7 +46,7 @@ IF largest <> i THEN
 	target[largest] := temp;
 
 	// Recursively heapify the affected sub-tree
-	Heapify(size, largest, target);
+	Heapify(upper, largest, target);
 END_IF;
 ]]></ST>
     </Implementation>

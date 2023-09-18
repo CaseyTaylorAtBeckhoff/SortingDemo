@@ -3,7 +3,7 @@
   <POU Name="MAIN" Id="{3ce1961a-3939-4be8-98ec-90464e47830d}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	unsorted : ARRAY [1..100] OF LREAL;
+	unsorted : ARRAY [1..101] OF LREAL;
 	lower: DINT;
 	i: DINT;
 	upper: DINT;
