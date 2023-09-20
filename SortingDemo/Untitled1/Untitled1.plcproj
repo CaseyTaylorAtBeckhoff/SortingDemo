@@ -21,6 +21,13 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\DuplicateArray.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\GVL.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="POUs\Heapify.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\RandomizeArray.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\SortArray.TcPOU">

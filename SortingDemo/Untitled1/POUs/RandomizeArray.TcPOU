@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.0">
+  <POU Name="RandomizeArray" Id="{37f861ee-38e4-40f2-af01-7e9beb004c5f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION RandomizeArray
+VAR
+	lower: DINT;
+	upper: DINT;
+	i: DINT;
+
+END_VAR
+VAR_IN_OUT
+	target: ARRAY[*] OF LREAL;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[lower := LOWER_BOUND(target, 1);
+upper := UPPER_BOUND(target, 1);
+
+FOR i:=lower TO upper DO
+  GVL.rand_generator(Num=>target[i]);
+END_FOR]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

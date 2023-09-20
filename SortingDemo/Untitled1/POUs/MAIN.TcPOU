@@ -4,6 +4,7 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	unsorted : ARRAY [1..101] OF LREAL;
+	unsorted2 : ARRAY [1..101] OF LREAL;
 	lower: DINT;
 	i: DINT;
 	upper: DINT;
@@ -11,21 +12,12 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[lower := LOWER_BOUND(unsorted, 1);
-upper := UPPER_BOUND(unsorted, 1);
-
-FOR i:=lower TO upper DO
-  rand_generator(Num=>unsorted[i]);
-END_FOR
+      <ST><![CDATA[RandomizeArray(target := unsorted);
+DuplicateArray(target := unsorted2, source := unsorted);
 
 SortArray(target := unsorted);
 
-FOR i:=lower TO upper DO
-  rand_generator(Num=>unsorted[i]);
-END_FOR
-
-
-HeapSort(target := unsorted);
+HeapSort(target := unsorted2);
 ]]></ST>
     </Implementation>
   </POU>
